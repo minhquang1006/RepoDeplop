@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+<!-- </head> -->
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main>
+    <% if(products.length>0) {%>
+    <ul>
+      <% products.forEach(p=>{ %>
+      <li class="cart-item">
+        <p><%= p.productItem.title %> (<%= p.quantity %>)</p>
+        <form action="/cart-delete-item" method="post">
+          <input
+            type="hidden"
+            name="productId"
+            value="<%= p.productItem._id %>"
+          />
+          <button class="btn" type="submit">Delete</button>
+
+          <!-- ======================================== SỬ DỤNG CSRF ============================================ -->
+          <!-- Tạo một hidden input để lấy chuỗi "csrf-token" được lưu ở thuộc tính "csrfToken" bên file "controller/shop.js" tại dòng code ====== GẮN CSRF-TOKEN VÀO VIEW INDEX ====== -->
+          <!-- Giá trị của thuộc tính "name" của hidden input bắt buộc phải là "_csrf" vì gói "csurf" sẽ mặc định tìm theo tên này để trích xuất chuỗi "csrf-token" -->
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+    <hr />
+    <form method="POST" action="/create-order">
+      <button class="btn" type="submit">Order</button>
+
+      <!-- ======================================== SỬ DỤNG CSRF ============================================ -->
+      <!-- Tạo một hidden input để lấy chuỗi "csrf-token" được lưu ở thuộc tính "csrfToken" bên file "controller/shop.js" tại dòng code ====== GẮN CSRF-TOKEN VÀO VIEW INDEX ====== -->
+      <!-- Giá trị của thuộc tính "name" của hidden input bắt buộc phải là "_csrf" vì gói "csurf" sẽ mặc định tìm theo tên này để trích xuất chuỗi "csrf-token" -->
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    </form>
+    <% }else{ %>
+    <h1>No product in cart</h1>
+    <% } %>
+  </main>
+
+  <%- include('../includes/end.ejs') %>
+</body>

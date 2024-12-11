@@ -1,0 +1,9 @@
+<form method="post" action="/cart">
+  <button class="btn" type="submit">Add to cart</button>
+  <input type="hidden" name="productId" value="<%= product._id %>" />
+
+  <!-- ======================================== SỬ DỤNG CSRF ============================================ -->
+  <!-- Tạo một hidden input để lấy chuỗi "csrf-token" được lưu ở thuộc tính "csrfToken" bên file "controller/shop.js" tại dòng code ====== GẮN CSRF-TOKEN VÀO VIEW INDEX ====== -->
+  <!-- Giá trị của thuộc tính "name" của hidden input bắt buộc phải là "_csrf" vì gói "csurf" sẽ mặc định tìm theo tên này để trích xuất chuỗi "csrf-token" -->
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+</form>

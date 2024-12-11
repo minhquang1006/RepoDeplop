@@ -1,0 +1,30 @@
+[
+  {
+    "id": "123425",
+    "title": "A Book",
+    "imageUrl": "https://www.publicdomainpictures.net/pictures/10000/velka/1-1210009435EGmE.jpg",
+    "description": "This is an awesome book!",
+    "price": "19"
+  },
+  {
+    "title": "Technology Product",
+    "imageUrl": "https://media.licdn.com/dms/image/D4E12AQEombpI22piRA/article-cover_image-shrink_600_2000/0/1685974935691?e=2147483647&v=beta&t=7KD_nljORg-QYiw94ZXd5xJbvcLZbdNBAm5drV8Db7A",
+    "description": "Amazing technology product",
+    "price": "2500",
+    "id": "0.2659605939363126"
+  },
+  {
+    "title": "xTer Funix",
+    "imageUrl": "https://media.licdn.com/dms/image/D4E12AQEombpI22piRA/article-cover_image-shrink_600_2000/0/1685974935691?e=2147483647&v=beta&t=7KD_nljORg-QYiw94ZXd5xJbvcLZbdNBAm5drV8Db7A",
+    "description": "Amazing xTer Funix",
+    "price": "2800",
+    "id": "1718290579184"
+  },
+  {
+    "id": "0.2947258775767103",
+    "title": " Technology Product-Great",
+    "imageUrl": " https://media.licdn.com/dms/image/D4E12AQEombpI22piRA/article-cover_image-shrink_600_2000/0/1685974935691?e=2147483647&v=beta&t=7KD_nljORg-QYiw94ZXd5xJbvcLZbdNBAm5drV8Db7A",
+    "description": " Amazing technology product-Great",
+    "price": "3500"
+  }
+]

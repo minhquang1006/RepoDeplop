@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css" />
+<link rel="stylesheet" href="/css/auth.css" />
+<!-- </head> -->
+
+<body>
+  <%- include('../includes/navigation.ejs') %>
+
+  <main>
+    <!-- Khối code if(){...} này sử dụng dữ liệu do hàm "flash()" (được cung cấp bởi gói connect-flash) trả về và lưu vào biến "errorMessage" để gửi tới view "login.ejs" này 
+     theo dòng code được viết bên file "auth.js" trong folder "controller" và dòng code đó được đánh dấu là: ====== LOGIN: GỬI DỮ LIỆU ĐƯỢC TRÍCH XUẤT BỞI FLASH() TỪ SESSION VÀO VIEW "login.ejs" ĐƯỢC RENDER RA ====== -->
+    <% if(errorMessage) { %>
+    <div class="user-message user-message--error"><%= errorMessage %></div>
+    <% } %>
+
+    <form class="login-form" action="/login" method="POST" novalidate>
+      <div class="form-control">
+        <label for="email">E-Mail</label>
+        <input
+          class="<%= errorInputArr.find(i=>i.path === 'email')? 'invalid' : '' %>"
+          type="email"
+          name="email"
+          id="email"
+          value="<%= oldInputValue.emailValue %>"
+        />
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input
+          class="<%= errorInputArr.find(i=>i.path === 'password')? 'invalid' : '' %>"
+          type="password"
+          name="password"
+          id="password"
+          value="<%= oldInputValue.passwordValue %>"
+        />
+      </div>
+      <button class="btn" type="submit">Login</button>
+
+      <!-- ======================================== SỬ DỤNG CSRF ============================================ -->
+      <!-- Tạo một hidden input để lấy chuỗi "csrf-token" được lưu ở thuộc tính "csrfToken" bên file "controller/shop.js" tại dòng code ====== GẮN CSRF-TOKEN VÀO VIEW INDEX ====== -->
+      <!-- Giá trị của thuộc tính "name" của hidden input bắt buộc phải là "_csrf" vì gói "csurf" sẽ mặc định tìm theo tên này để trích xuất chuỗi "csrf-token" -->
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    </form>
+    <div class="centered">
+      <a href="/reset">Reset Password</a>
+    </div>
+    `
+  </main>
+  <%- include('../includes/end.ejs') %>
+</body>
